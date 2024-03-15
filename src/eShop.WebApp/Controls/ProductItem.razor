@@ -1,0 +1,8 @@
+@if (Product != null)
+{
+    <tr @onclick="() => ViewDetails(Product.Id)">
+        <td>@Product.Brand</td>
+        <td>@Product.Name</td>
+        <td>@Product.Price</td>
+    </tr>
+}

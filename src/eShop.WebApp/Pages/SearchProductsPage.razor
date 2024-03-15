@@ -1,0 +1,33 @@
+﻿@page "/products"
+
+<h2>Search Products</h2>
+
+<br>
+
+<div>
+    <SearchBar OnSearch="HandleSearch" />
+</div>
+
+<table>
+    <thead>
+        <th>Brand</th>
+        <th>Name</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        @if (ProductsList != null)
+        {
+            if (ProductsList.Count() > 0)
+            {
+                foreach (var product in ProductsList)
+                {
+                    <ProductItem Product=@product/>
+                }
+            }
+            else
+            {
+                <p style: "aria-colspan=3";>None found</p>
+            }
+        }
+    </tbody>
+</table>

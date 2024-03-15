@@ -1,0 +1,16 @@
+<div class="form-inline">
+       <div class="form-group">
+              <label>Search&nbsp;</label>
+              <input type="text"
+                     class="form-control"
+                     @bind="filter" 
+              />
+
+       </div>
+
+       <button type="button"
+               class="btn btn-primary"
+               @onclick="() => HandleSearch(filter)">
+               Search Products
+               </button>
+</div>

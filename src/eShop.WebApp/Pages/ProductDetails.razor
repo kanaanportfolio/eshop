@@ -1,0 +1,11 @@
+@page "/products/{id}"
+
+@if (Product != null)
+{
+    <img src=@Product.ImageLink />
+    <p>Product.Price.ToString('c')</p>
+    <p>Product.Description</p>
+    <p>Product.Name</p>
+    <p>Product.Brand</p>
+}
+
