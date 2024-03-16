@@ -1,11 +1,20 @@
-@page "/products/{id}"
+@page "/products/{id:int}"
+
+<h1>Product Details</h1>
 
 @if (Product != null)
 {
-    <img src=@Product.ImageLink />
-    <p>Product.Price.ToString('c')</p>
-    <p>Product.Description</p>
-    <p>Product.Name</p>
-    <p>Product.Brand</p>
+    <div class="card" style="width: 28rem;">
+        <div class="card-body">
+            <img 
+                class="card-img-top"
+                src=@Product.ImageLink 
+                />
+            <h5 class="card-title">@Product.Name</h5>
+            <h6 class="card-subtitle">@Product.Brand</h6>
+            <h6 class="card-subtitle">@Product.Price.ToString("c")</h6>
+            <p class="card-text">@Product.Description</p>
+        </div>
+    </div>
 }
-
+<NavLink href="products">Back</NavLink>

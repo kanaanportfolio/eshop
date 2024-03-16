@@ -1,8 +1,12 @@
 @if (Product != null)
 {
-    <tr @onclick="() => ViewDetails(Product.Id)">
+    <tr>
+        <td>
+            <NavLink href=@($"products/{Product.Id}")>
+                @Product.Name
+            </NavLink>
+        </td>
         <td>@Product.Brand</td>
-        <td>@Product.Name</td>
-        <td>@Product.Price</td>
+        <td>@Product.Price.ToString("c")</td>
     </tr>
 }

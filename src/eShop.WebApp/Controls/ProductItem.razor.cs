@@ -10,9 +10,4 @@ public partial class ProductItem
 
     [Inject]
     public NavigationManager NavigationManager { get; set; }
-
-    public void ViewDetails(int id)
-    {
-        NavigationManager.NavigateTo("products/{id}");
-    }
 }
