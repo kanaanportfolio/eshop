@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using eShop.WebApp.Data;
 using eShop.Application.PluginInterfaces.DataStore;
 using eShop.UseCases.SearchProductsScreen;
+using eShop.UseCases.ViewProductScreen; 
 using eShop.DataStore.HardCoded;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
-builder.Services.AddTransient<IViewProduct, ViewProduct>();
-builder.Services.AddTransient<ISearchProducts, SearchProducts>();
+builder.Services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
+builder.Services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
 
 var app = builder.Build();
 

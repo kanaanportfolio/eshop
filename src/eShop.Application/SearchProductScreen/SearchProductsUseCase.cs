@@ -3,18 +3,17 @@ using eShop.Core.Models;
 
 namespace eShop.UseCases.SearchProductsScreen;
 
-
-public class ViewProduct : IViewProduct
+public class SearchProductsUseCase : ISearchProductsUseCase
 {
     private readonly IProductRepository _repository;
 
-    public ViewProduct(IProductRepository repository)
+    public SearchProductsUseCase(IProductRepository repository)
     {
         _repository = repository;
     }
 
-    public Product? GetById(int id)
+    public IEnumerable<Product> Filter(string filter)
     {
-        return _repository.GetProduct(id);
+        return _repository.GetProducts(filter);
     }
 }

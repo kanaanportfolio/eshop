@@ -4,24 +4,24 @@ using Microsoft.AspNetCore.Components;
 
 namespace eShop.WebApp.Pages;
 
-public partial class SearchProductsPage
+public partial class SearchProductsUseCasePage
 {
     [Inject]
-    public ISearchProducts SearchProducts { get; set; }
+    public ISearchProductsUseCase SearchProductsUseCase { get; set; }
 
     public IEnumerable<Product> ProductsList { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
-        ProductsList = SearchProducts.Filter(null!);
+        ProductsList = SearchProductsUseCase.Filter(null!);
     }
 
     private void HandleSearch(string filter)
     {
         if (string.IsNullOrWhiteSpace(filter))
         {
-            ProductsList = SearchProducts.Filter(null!);
+            ProductsList = SearchProductsUseCase.Filter(null!);
         }
-        ProductsList = SearchProducts.Filter(filter);
+        ProductsList = SearchProductsUseCase.Filter(filter);
     }
 }
