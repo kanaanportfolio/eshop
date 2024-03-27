@@ -4,5 +4,5 @@ namespace eShop.Application.ViewProductScreen;
 
 public interface IAddProductToCartUseCase
 {
-    public Task Add(int productId);
+    Task Add(int productId);
 }

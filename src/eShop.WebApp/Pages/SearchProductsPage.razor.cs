@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Components;
 
 namespace eShop.WebApp.Pages;
 
-public partial class SearchProductsUseCasePage
+public partial class SearchProductsPage
 {
     [Inject]
     public ISearchProductsUseCase SearchProductsUseCase { get; set; }
 
     public IEnumerable<Product> ProductsList { get; set; } = default!;
 
-    protected override async Task OnInitializedAsync()
+    protected void OnInitialized()
     {
         ProductsList = SearchProductsUseCase.Filter(null!);
     }

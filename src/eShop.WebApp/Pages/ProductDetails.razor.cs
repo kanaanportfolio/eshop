@@ -10,9 +10,9 @@ public partial class ProductDetails
     [Parameter]
     public int Id { get; set; }
 
+    [Inject] public NavigationManager NavigationManager { get; set; }
     [Inject] public IViewProductUseCase ViewProductUseCase { get; set; }
     [Inject] public IAddProductToCartUseCase AddProductToCartUseCase { get; set; }
-    [Inject] public NavigationManager NavigationManager { get; set; }
 
     private Product Product { get; set; }
 
@@ -21,7 +21,7 @@ public partial class ProductDetails
         Product = ViewProductUseCase.GetById(Id);
     }
 
-    private async Task AddToCart()
+    private async void AddToCart()
     {
         await AddProductToCartUseCase.Add(Id);
         NavigationManager.NavigateTo("/products");

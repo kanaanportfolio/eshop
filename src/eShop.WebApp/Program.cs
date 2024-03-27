@@ -5,6 +5,9 @@ using eShop.Application.PluginInterfaces.DataStore;
 using eShop.UseCases.SearchProductsScreen;
 using eShop.UseCases.ViewProductScreen; 
 using eShop.DataStore.HardCoded;
+using eShop.Application.ViewProductScreen;
+using eShop.Application.PluginInterfaces.UI;
+using eShop.ShoppingCart.Local;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +17,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
 builder.Services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
-
+builder.Services.AddTransient<IAddProductToCartUseCase, AddProductToCartUseCase>();
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
