@@ -1,0 +1,26 @@
+@page "/productscard"
+
+<SearchBar OnSearch="Handle" />
+
+@if (Products == null) return;
+
+<div class="container">
+    <div class="row">
+    @foreach (var product in Products)
+    {
+        <ProductCard Product=product />
+    }
+    </div>
+</div>
+
+@code
+{
+    [Inject] public UseCases.SearchProductsScreen.ISearchProductsUseCase SearchProductsUseCase { get; set; }
+
+    private IEnumerable<Product> Products { get; set; }
+
+    private void Handle(string searchTerm)
+    {
+        Products = SearchProductsUseCase.Filter(searchTerm);
+    }
+}

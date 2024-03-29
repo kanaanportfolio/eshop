@@ -1,0 +1,33 @@
+@page "/cart"
+
+@if (Order == null) return;
+
+<div class="row">
+    <div class="col-10">
+        @foreach (var lineItem in Order.LineItems)
+        {
+            <LineItems LineItem=lineItem />
+            <hr />
+        }
+    </div>
+    <div class="col-2">
+        <OrderSummary LineItems=@Order.LineItems />
+    </div>
+</div>
+
+
+@code
+{
+    [Inject] Application.ShoppingCartScreen.IViewShoppingCartUseCase ViewShoppingCartUseCase { get; set; }
+
+    public Order Order { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Order = await ViewShoppingCartUseCase.View();
+            StateHasChanged();
+        }
+    }
+}

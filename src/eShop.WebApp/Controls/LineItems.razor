@@ -1,0 +1,55 @@
+@if (LineItem == null || LineItem.Product == null) return;
+
+<div class="row">
+
+    <div class="col">
+        <img src=@LineItem.Product.ImageLink />
+    </div>
+
+    <div class="col">
+        <h5>@LineItem.Product.Name</h5>
+        <p>Brand: @LineItem.Product.Brand</p>
+        <p>Price: @LineItem.Product.Price.ToString("c")</p>
+
+        <label>Quantity: </label>
+        <input
+            type="number"
+            min=0
+            value=@LineItem.Quantity
+            @onchange="Handle" />
+    </div>
+
+    @if (LineItem.OrderId != null)
+    {
+        <p>@LineItem.OrderId</p>    
+    }
+    <div class="col">
+        <button
+            type="button"
+            class="btn btn-danger"
+            @onclick=@(() => Delete(LineItem.ProductId))>
+            Remove From Cart
+            </button>
+    </div>
+</div>
+
+@code
+{
+    //[Inject]
+    //public IEditCartProductUseCase EditCartProductUseCase { get; set; }
+    [Parameter]
+    public OrderLineItem LineItem { get; set; }
+
+    private int quantity;
+
+    private async void Handle()
+    {
+        return;
+     //   EditCartProductUseCase.EditQuantity(LineItem.Product.Id, LineItem.Quantity);
+    }
+
+    private async void Delete(int productId)
+    {
+
+    }
+}

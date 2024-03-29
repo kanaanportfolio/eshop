@@ -1,0 +1,7 @@
+<p>Total price:</p>
+<p>@LineItems.Select(item => item.Price * item.Quantity).Sum()</p>
+
+@code
+{
+    [Parameter] public IEnumerable<OrderLineItem> LineItems { get; set; }
+}

@@ -8,6 +8,7 @@ using eShop.DataStore.HardCoded;
 using eShop.Application.ViewProductScreen;
 using eShop.Application.PluginInterfaces.UI;
 using eShop.ShoppingCart.Local;
+using eShop.Application.ShoppingCartScreen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IViewProductUseCase, ViewProductUseCase>();
 builder.Services.AddTransient<ISearchProductsUseCase, SearchProductsUseCase>();
 builder.Services.AddTransient<IAddProductToCartUseCase, AddProductToCartUseCase>();
+builder.Services.AddTransient<IViewShoppingCartUseCase, ViewShoppingCartUseCase>();
+
 builder.Services.AddScoped<IShoppingCart, ShoppingCart>();
 var app = builder.Build();
 

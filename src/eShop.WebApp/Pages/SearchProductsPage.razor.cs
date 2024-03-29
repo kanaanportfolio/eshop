@@ -11,7 +11,7 @@ public partial class SearchProductsPage
 
     public IEnumerable<Product> ProductsList { get; set; } = default!;
 
-    protected void OnInitialized()
+    protected override void OnInitialized()
     {
         ProductsList = SearchProductsUseCase.Filter(null!);
     }
